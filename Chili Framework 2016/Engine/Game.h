@@ -43,4 +43,15 @@ private:
 	/********************************/
 	/*  User Variables              */
 	/********************************/
+	int x = 400;
+	int y = 300;
+	int vx = 0;
+	int vy = 0;
+	Color c = Color('ff', 'ff', 'ff');
+	enum Shape { CROSS, FRAME };
+	Shape target = CROSS;
+	bool inhibitUp = false;
+	bool inhibitDown = false;
+	bool inhibitLeft = false;
+	bool inhibitRight = false;
 };
