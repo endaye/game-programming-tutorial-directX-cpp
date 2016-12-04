@@ -96,44 +96,56 @@ void Game::UpdateModel()
 		vy = 0;
 	}
 
-	if (wnd.kbd.KeyIsPressed(VK_CONTROL))
+	if (x - targetX < 11 && 
+		x - targetX > -11 && 
+		y - targetY < 11 && 
+		y - targetY > -11)
 	{
 		c = Color('ff', '0', '0');
 	}
+	else
+	{
+		c = Color('ff', 'ff', 'ff');
+	}
+
 	if (wnd.kbd.KeyIsPressed(VK_SHIFT))
 	{
-		target = FRAME;
+		cursor = FRAME;
 	}
 	else
 	{
-		target = CROSS;
+		cursor = CROSS;
 	}
-
-	/*if (vx >= 2) 
-	{
-		vx = 2;
-	} 
-	else if (vx <= -2)
-	{
-		vx = -2;
-	}
-
-	if (vy >= 2) 
-	{
-		vy = 2;
-	}
-	else if (vy <= -2)
-	{
-		vy = -2;
-	}*/
 
 	x += vx;
 	y += vy;
+
+	if (x + 5 > gfx.ScreenWidth - 1)
+	{
+		x = gfx.ScreenWidth - 6;
+	}
+
+	if (x - 5 < 0)
+	{
+		x = 5;
+	}
+
+	if (y + 5 > gfx.ScreenHeight - 1)
+	{
+		y = gfx.ScreenHeight - 6;
+	}
+
+	if (y - 5 < 0)
+	{
+		y = 5;
+	}
+
+	
 }
 
 void Game::ComposeFrame()
 {
-	switch (target) {
+	switch (cursor) {
 	case FRAME:
 		gfx.PutPixel(x + 5, y + 5, c);
 		gfx.PutPixel(x + 5, y + 4, c);
@@ -176,4 +188,30 @@ void Game::ComposeFrame()
 		gfx.PutPixel(x, y - 5, c);
 		break;
 	}
+
+	Color targetColor = Color('0', 'ff', 'ff');
+	gfx.PutPixel(targetX + 5, targetY + 5, targetColor);
+	gfx.PutPixel(targetX + 5, targetY + 4, targetColor);
+	gfx.PutPixel(targetX + 5, targetY + 3, targetColor);
+	gfx.PutPixel(targetX + 5, targetY - 3, targetColor);
+	gfx.PutPixel(targetX + 5, targetY - 4, targetColor);
+	gfx.PutPixel(targetX + 5, targetY - 5, targetColor);
+	gfx.PutPixel(targetX - 5, targetY + 5, targetColor);
+	gfx.PutPixel(targetX - 5, targetY + 4, targetColor);
+	gfx.PutPixel(targetX - 5, targetY + 3, targetColor);
+	gfx.PutPixel(targetX - 5, targetY - 3, targetColor);
+	gfx.PutPixel(targetX - 5, targetY - 4, targetColor);
+	gfx.PutPixel(targetX - 5, targetY - 5, targetColor);
+	gfx.PutPixel(targetX + 5, targetY + 5, targetColor);
+	gfx.PutPixel(targetX + 4, targetY + 5, targetColor);
+	gfx.PutPixel(targetX + 3, targetY + 5, targetColor);
+	gfx.PutPixel(targetX - 3, targetY + 5, targetColor);
+	gfx.PutPixel(targetX - 4, targetY + 5, targetColor);
+	gfx.PutPixel(targetX - 5, targetY + 5, targetColor);
+	gfx.PutPixel(targetX + 5, targetY - 5, targetColor);
+	gfx.PutPixel(targetX + 4, targetY - 5, targetColor);
+	gfx.PutPixel(targetX + 3, targetY - 5, targetColor);
+	gfx.PutPixel(targetX - 3, targetY - 5, targetColor);
+	gfx.PutPixel(targetX - 4, targetY - 5, targetColor);
+	gfx.PutPixel(targetX - 5, targetY - 5, targetColor);
 }

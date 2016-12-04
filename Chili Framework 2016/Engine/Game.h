@@ -47,9 +47,11 @@ private:
 	int y = 300;
 	int vx = 0;
 	int vy = 0;
+	const int targetX = 200;
+	const int targetY = 300;
 	Color c = Color('ff', 'ff', 'ff');
 	enum Shape { CROSS, FRAME };
-	Shape target = CROSS;
+	Shape cursor = CROSS;
 	bool inhibitUp = false;
 	bool inhibitDown = false;
 	bool inhibitLeft = false;
