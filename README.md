@@ -1,6 +1,4 @@
 # game-programming-tutorial-directX-cpp
-Game Programming Tutorial DirectX in C++
-
-[Video Link][video]
+[Game Programming Tutorial DirectX in C++][video]
 
 [video]: https://youtu.be/PwuIEMUFUnQ
