@@ -71,6 +71,37 @@ void Game::UpdateModel()
 		dudeX = ClampScreenX(dudeX, dudeWidth);
 		dudeY = ClampScreenY(dudeY, dudeHeight);
 
+		poo0X += poo0vX;
+		poo0Y += poo0vY;
+		poo1X += poo1vX;
+		poo1Y += poo1vY;
+		poo2X += poo2vX;
+		poo2Y += poo2vY;
+		if (IsHitHorizontalWall(poo0X, pooWidth))
+		{
+			poo0vX *= -1;
+		}
+		if (IsHitVerticalWall(poo0Y, pooHeight))
+		{
+			poo0vY *= -1;
+		}
+		if (IsHitHorizontalWall(poo1X, pooWidth))
+		{
+			poo1vX *= -1;
+		}
+		if (IsHitVerticalWall(poo1Y, pooHeight))
+		{
+			poo1vY *= -1;
+		}
+		if (IsHitHorizontalWall(poo2X, pooWidth))
+		{
+			poo2vX *= -1;
+		}
+		if (IsHitVerticalWall(poo2Y, pooHeight))
+		{
+			poo2vY *= -1;
+		}
+
 		if (IsColliding(dudeX, dudeY, dudeWidth, dudeHeight,
 			poo0X, poo0Y, pooWidth, pooHeight))
 		{
@@ -29044,6 +29075,26 @@ bool Game::IsColliding(int x0, int y0, int width0, int height0, int x1, int y1, 
 		right0 >= x1 &&
 		y0 <= bottom1 &&
 		bottom1 >= y1)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool Game::IsHitHorizontalWall(int x, int width)
+{
+	int right = x + width;
+	if (x <= 0 || right >= gfx.ScreenWidth - 1)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool Game::IsHitVerticalWall(int y, int height)
+{
+	int bottom = y + height;
+	if (y <= 0 || bottom >= gfx.ScreenHeight - 1)
 	{
 		return true;
 	}

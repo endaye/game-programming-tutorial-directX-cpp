@@ -44,7 +44,9 @@ private:
 	int ClampScreenX(int x, int width);
 	int ClampScreenY(int y, int height);
 	bool IsColliding(int x0, int y0, int width0, int height0,
-		int x1, int y1, int width1, int height1);
+	int x1, int y1, int width1, int height1);
+	bool IsHitHorizontalWall(int x, int width);
+	bool IsHitVerticalWall(int y, int height);
 private:
 	MainWindow& wnd;
 	Graphics gfx;
@@ -55,15 +57,25 @@ private:
 	int dudeY = 300;
 	int dudeWidth = 20;
 	int dudeHeight = 20;
+
 	int poo0X = 300;
 	int poo0Y = 150;
+	int poo0vX = 1;
+	int poo0vY = 1;
 	bool poo0IsEaten = false;
+	
 	int poo1X = 100;
 	int poo1Y = 500;
+	int poo1vX = -1;
+	int poo1vY = 1;
 	bool poo1IsEaten = false;
+	
 	int poo2X = 600;
 	int poo2Y = 400;
+	int poo2vX = 1;
+	int poo2vY = -1;
 	bool poo2IsEaten = false;
+	
 	int pooWidth = 24;
 	int pooHeight = 24;
 	bool isStarted = false;
