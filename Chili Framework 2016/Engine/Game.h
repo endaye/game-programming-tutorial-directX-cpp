@@ -1,5 +1,5 @@
-/******************************************************************************************
- *	Chili DirectX Framework Version 16.07.20											  *
+/****************************************************************************************** 
+ *	Chili DirectX Framework Version 16.07.20											  *	
  *	Game.h																				  *
  *	Copyright 2016 PlanetChili.net <http://www.planetchili.net>							  *
  *																						  *
@@ -23,15 +23,13 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
-#include "Poo.h"
-#include "Dude.h"
 
 class Game
 {
 public:
-	Game(class MainWindow& wnd);
-	Game(const Game&) = delete;
-	Game& operator=(const Game&) = delete;
+	Game( class MainWindow& wnd );
+	Game( const Game& ) = delete;
+	Game& operator=( const Game& ) = delete;
 	void Go();
 private:
 	void ComposeFrame();
@@ -39,25 +37,10 @@ private:
 	/********************************/
 	/*  User Functions              */
 	/********************************/
-	void DrawFace(int x, int y);
-	void DrawPoo(int x, int y);
-	void DrawTitleScreen(int x, int y);
-	void DrawGameOver(int x, int y);
-	bool IsColliding(int x0, int y0, int width0, int height0,
-	int x1, int y1, int width1, int height1);
-	bool IsHitHorizontalWall(int x, int width);
-	bool IsHitVerticalWall(int y, int height);
 private:
 	MainWindow& wnd;
 	Graphics gfx;
 	/********************************/
 	/*  User Variables              */
 	/********************************/
-
-	Dude dude;
-	Poo poo0;
-	Poo poo1;
-	Poo poo2;
-
-	bool isStarted = false;
 };
